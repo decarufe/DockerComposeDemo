@@ -1,0 +1,12 @@
+services:
+  dockerdemowebapi:
+    image: ${DOCKER_REGISTRY-}dockerdemowebapi
+    build:
+      context: .
+      dockerfile: DockerDemoWebApi/Dockerfile
+    container_name: docker-demo-web-api-container
+    depends_on:
+      - docker-demo-sqlserver    
+  docker-demo-sqlserver:
+    container_name: docker-demo-sqlserver-container
+    image: mcr.microsoft.com/mssql/server:2022-latest
